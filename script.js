@@ -27,6 +27,7 @@ function playRound(playerSelection, computerSelection) {
     // 1. Compare both selections (lower case)
     if (computerSelection === playerSelectionLC) {
         console.log('Tie!');
+        roundDivider();
         return 'tie';
     } else {
         // My 'state' playerWins will only change if player beats computer
@@ -50,14 +51,17 @@ function playRound(playerSelection, computerSelection) {
             default:
                 // Invalid choice ends round
                 console.log('Invalid choice. You lose!');
+                roundDivider();
                 return 'computerCounter';
         }
         // 2. Return results
         if (playerWins) {
             console.log('You win! ' + results[playerSelectionLC]);
+            roundDivider();
             return 'playerCounter';
         } else {
             console.log('You lose! ' + results[computerSelection]);
+            roundDivider();
             return 'computerCounter';
         }
     }
@@ -69,13 +73,6 @@ function playRound(playerSelection, computerSelection) {
 // console.log('computerSelection:', computerSelection);
 // console.log(playRound(playerSelection, computerSelection));
 
-// tiebreaker
-
-/* function tiebreaker() {
-    
-} */
-
-
 // game
 
 function game() {
@@ -85,6 +82,7 @@ function game() {
         computerCounter: 0,
         tie: 0
     };  
+    console.log(`||| ROCK \u{270A} PAPER \u{270B} SCISSORS \u{270C} |||`);
     // 1. Each round get a choice from user via prompt, call playRound, and update counters:
     for (let i = 1; i < 6; i++) {
         const playerSelection = prompt(`Round ${i}: Rock, paper or scissors?`);
@@ -95,14 +93,38 @@ function game() {
         // Outcomes in result match props in obj counter:
         counter[result] += 1;
     }
+    // 2. Display final score:
+    console.log(`-- FINAL SCORE: PLAYER ${counter.playerCounter} - COMPUTER ${counter.computerCounter}`);
+    
     // 2. Compare counters and display the winner:
+    // tiebreaker (returns either 0 or 1) to add 1 more ocurrence randomly
+    if (counter.playerCounter === counter.computerCounter) {
+        console.log('-- TIE! Winner will be decided randomly.');
+        if(tiebreaker()) {
+            counter.playerCounter += 1;
+        } else {
+            counter.computerCounter += 1;
+        }
+    }
+    // Winner:
     if (counter.playerCounter > counter.computerCounter) {
-        return 'YOU WIN THE GAME!';
-    } else if (counter.playerCounter < counter.computerCounter) {
-        return 'YOU LOSE THE GAME!';
+        return '** YOU WIN THE GAME! **';
     } else {
-        return 'TIE!'
+        return '** YOU LOSE THE GAME! **';
     }
 }
 
 console.log(game());
+
+// HELPER FUNCTIONS:
+
+// Divider to use after each round:
+function roundDivider() {
+    console.log('--------------------');
+}
+
+// Tiebreaker:
+function tiebreaker() {
+    // Returns either 0 or 1
+    return Math.floor(Math.random() * 2);
+}
