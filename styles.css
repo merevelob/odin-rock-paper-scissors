@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Bakso Sapi';
+    src: url('./resources/BaksoSapi.otf');
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    font-family: 'Bakso Sapi';
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+/* Header */
+header {
+    height: 100px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 100%;
+    width: auto;
+}
+
+header > h1 {
+    font-size: 48px;
+}
+
+/* Game */
+.choices {
+    height: calc(100vh - 150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.choices > img {
+    height: 150px;
+    width: auto;
+}
+
+/* Footer */
+
+footer {
+    height: 50px;
+    background-color: darkgray;
+    display: flex;
+}
+
+footer > span {
+    margin: auto;
+}
