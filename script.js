@@ -1,125 +1,89 @@
 // Project: Rock Paper Scissors
 
+// Choices buttons
+
+const choices = document.querySelectorAll('.choice > img');
+choices.forEach(choice => choice.addEventListener('click', playRound));
+
 // getComputerChoice
 
 function getComputerChoice() {
-    // 1. Store choices in an array
     const choices = ['rock', 'paper', 'scissors'];
-    // 2. Get a random index
     const randomIndex = Math.floor(Math.random() * choices.length);
-    // 3. Return corresponding choice
     return choices[randomIndex];
 }
+
+// Results
+
+const counter = {
+    player: 0,
+    computer: 0,
+    rounds: 0
+};  
 
 // playRound
 
 function playRound(event) {
-    // event.stopPropagation();
     const results = {
         rock: 'Rock beats scissors.',
         paper: 'Paper beats rock.',
         scissors: 'Scissors beat paper.'
     };
 
+    // Count and display round #
+    counter.rounds += 1;
+    const round = document.querySelector('.round');
+    round.textContent = `Round ${counter.rounds}`;
+
+    // Selections
     const playerSelection = event.target.id;
-    console.log(playerSelection);
     const computerSelection = getComputerChoice();
-    console.log(computerSelection);
     
+    // Display selections
+    const playerSelectionElement = document.querySelector('.playerSelection');
+    playerSelectionElement.textContent = `Player selection: ${playerSelection}`;
+    const computerSelectionElement = document.querySelector('.computerSelection');
+    computerSelectionElement.textContent = `Computer selection: ${computerSelection}`;
+    
+    // Round results, score, and winner DOM elements
+    const result = document.querySelector('.result');
+    const score = document.querySelector('.score');
+    const winner = document.querySelector('.winner');
+
     // 1. Compare both selections
     if (computerSelection === playerSelection) {
-        console.log('Tie!');
-        roundDivider();
-        return 'tie';
+        result.textContent = 'Tie!';
+        return;
     } else {
         // My 'state' playerWins will only change if player beats computer
         let playerWins = false;
         switch (playerSelection) {
             case 'rock':
-                if (computerSelection === 'scissors') {
-                    playerWins = true;
-                }
+                if (computerSelection === 'scissors') playerWins = true;
                 break;
             case 'paper':
-                if (computerSelection === 'rock') {
-                    playerWins = true;
-                }
+                if (computerSelection === 'rock') playerWins = true;
                 break;
             case 'scissors':
-                if (computerSelection === 'paper') {
-                    playerWins = true;
-                }
+                if (computerSelection === 'paper') playerWins = true;
         }
-        // 2. Return results
+        // 2. Show round results
         if (playerWins) {
-            console.log('You win! ' + results[playerSelection]);
-            roundDivider();
-            return 'playerCounter';
+            result.textContent = `You win! ${results[playerSelection]}`;
+            counter.player += 1;
         } else {
-            console.log('You lose! ' + results[computerSelection]);
-            roundDivider();
-            return 'computerCounter';
+            result.textContent = `You lose! ${results[computerSelection]}`;
+            counter.computer += 1;
+        }
+        // 3. Display score
+        score.textContent = `PLAYER ${counter.player} - COMPUTER ${counter.computer}`;
+        // 4. Check if there's a winner
+        if (counter.player === 5 || counter.computer === 5) {
+            if (counter.player > counter.computer) winner.textContent = 'YOU WIN THE GAME!';
+            else winner.textContent = 'YOU LOSE THE GAME!';
+            // Disable choices buttons
+            choices.forEach(choice => choice.removeEventListener('click', playRound));
         }
     }
 }
 
-// game
-
-// function game() {
-//     // Counter for both players:
-//     let counter = {
-//         playerCounter: 0,
-//         computerCounter: 0,
-//         tie: 0
-//     };  
-//     console.log(`||| ROCK \u{270A} PAPER \u{270B} SCISSORS \u{270C} |||`);
-//     // 1. Each round get a choice from user via prompt, call playRound, and update counters:
-//     for (let i = 1; i < 6; i++) {
-//         const playerSelection = prompt(`Round ${i}: Rock, paper or scissors?`);
-//         const computerSelection = getComputerChoice();
-//         console.log(`Round ${i} playerSelection:`, playerSelection);
-//         console.log(`Round ${i} computerSelection:`, computerSelection);
-//         const result = playRound(playerSelection, computerSelection);
-//         // Outcomes in result match props in obj counter:
-//         counter[result] += 1;
-//     }
-//     // 2. Display final score:
-//     console.log(`-- FINAL SCORE: PLAYER ${counter.playerCounter} - COMPUTER ${counter.computerCounter}`);
-    
-//     // 2. Compare counters and display the winner:
-//     // tiebreaker (returns either 0 or 1) to add 1 more ocurrence randomly
-//     if (counter.playerCounter === counter.computerCounter) {
-//         console.log('-- TIE! Winner will be decided randomly.');
-//         if(tiebreaker()) {
-//             counter.playerCounter += 1;
-//         } else {
-//             counter.computerCounter += 1;
-//         }
-//     }
-//     // Winner:
-//     if (counter.playerCounter > counter.computerCounter) {
-//         return '** YOU WIN THE GAME! **';
-//     } else {
-//         return '** YOU LOSE THE GAME! **';
-//     }
-// }
-
-// console.log(game());
-
-// HELPER FUNCTIONS:
-
-// Divider to use after each round:
-function roundDivider() {
-    console.log('--------------------');
-}
-
-// Tiebreaker:
-function tiebreaker() {
-    // Returns either 0 or 1
-    return Math.floor(Math.random() * 2);
-}
-
-// Event listeners
-
-const choices = document.querySelectorAll('.choice > img');
-choices.forEach(choice => choice.addEventListener('click', playRound));

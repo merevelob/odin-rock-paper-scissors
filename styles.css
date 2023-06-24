@@ -7,6 +7,10 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    background-color: ghostwhite;
+}
+
 *,
 *::before,
 *::after {
@@ -22,6 +26,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 8px;
 }
 
 .logo {
@@ -34,8 +39,16 @@ header > h1 {
 }
 
 /* Game */
-.choices {
+
+.game {
     height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+}
+
+.choices {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,6 +70,12 @@ header > h1 {
     width: auto;
     margin: auto;
 }
+/**/
+.results {
+    height: 150px;
+    background-color: rgba(128, 0, 128, 0.63);
+}
+
 
 /* Footer */
 

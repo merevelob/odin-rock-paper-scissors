@@ -12,16 +12,26 @@
         <img src="./resources/rps-logo.png" class="logo" alt="logo">
         <h1>ROCK PAPER SCISSORS</h1>
     </header>
-    <div class="choices">
-        <div class="choice">
-            <img src="./resources/rock.png" id="rock" alt="rock">
+    <div class="game">
+        <div class="choices">
+            <div class="choice">
+                <img src="./resources/rock.png" id="rock" alt="rock">
+            </div>
+            <div class="choice">
+                <img src="./resources/paper.png" id="paper" alt="paper">
+            </div>
+            <div class="choice">
+                <img src="./resources/scissors.png" id="scissors" alt="scissors">
+            </div>
         </div>
-        <div id="paper" class="choice">
-            <img src="./resources/paper.png" id="paper" alt="paper">
+        <div class="results">
+            <h2 class="round"></h3>
+            <span class="playerSelection"></span><span class="computerSelection"></span>
+            <p class="result"></p>
+            <p class="score"></p>
+            <h3 class="winner"></h3>
         </div>
-        <div class="choice">
-            <img src="./resources/scissors.png" id="scissors" alt="scissors">
-        </div>
+        <button class="resetBtn">Reset</button>
     </div>
     <footer>
         <span>TOP | Foundations Course | JavaScript Basics | Project: Rock Paper Scissors | 2023</span>
