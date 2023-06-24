@@ -41,9 +41,9 @@ function playRound(event) {
     
     // Display selections
     const playerSelectionElement = document.querySelector('.playerSelection');
-    playerSelectionElement.textContent = `Player selection: ${playerSelection}`;
+    playerSelectionElement.textContent = `Player: ${playerSelection}`;
     const computerSelectionElement = document.querySelector('.computerSelection');
-    computerSelectionElement.textContent = `Computer selection: ${computerSelection}`;
+    computerSelectionElement.textContent = `Computer: ${computerSelection}`;
     
     // Round results, score, and winner DOM elements
     const result = document.querySelector('.result');
@@ -51,10 +51,8 @@ function playRound(event) {
     const winner = document.querySelector('.winner');
 
     // 1. Compare both selections
-    if (computerSelection === playerSelection) {
-        result.textContent = 'Tie!';
-        return;
-    } else {
+    if (computerSelection === playerSelection) result.textContent = 'Tie!';
+    else {
         // My 'state' playerWins will only change if player beats computer
         let playerWins = false;
         switch (playerSelection) {
@@ -75,15 +73,15 @@ function playRound(event) {
             result.textContent = `You lose! ${results[computerSelection]}`;
             counter.computer += 1;
         }
-        // 3. Display score
-        score.textContent = `PLAYER ${counter.player} - COMPUTER ${counter.computer}`;
-        // 4. Check if there's a winner
-        if (counter.player === 5 || counter.computer === 5) {
-            if (counter.player > counter.computer) winner.textContent = 'YOU WIN THE GAME!';
-            else winner.textContent = 'YOU LOSE THE GAME!';
-            // Disable choices buttons
-            choices.forEach(choice => choice.removeEventListener('click', playRound));
-        }
+    }
+    // 3. Display score
+    score.textContent = `PLAYER ${counter.player} - COMPUTER ${counter.computer}`;
+    // 4. Check if there's a winner
+    if (counter.player === 5 || counter.computer === 5) {
+        if (counter.player > counter.computer) winner.textContent = 'YOU WIN THE GAME!';
+        else winner.textContent = 'YOU LOSE THE GAME!';
+        // Disable choices buttons
+        choices.forEach(choice => choice.removeEventListener('click', playRound));
     }
 }
 

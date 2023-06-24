@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    background-color: ghostwhite;
+    background-color: #A8BDBF;
 }
 
 *,
@@ -21,8 +21,8 @@ body {
 }
 /* Header */
 header {
-    height: 100px;
-    border: 2px solid black;
+    height: 80px;
+    background-color: #BFBCA8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,11 +41,11 @@ header > h1 {
 /* Game */
 
 .game {
-    height: calc(100vh - 150px);
+    height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 48px;
+    gap: 32px;
 }
 
 .choices {
@@ -58,7 +58,7 @@ header > h1 {
 .choice {
     height: 200px;
     width: 200px;
-    background-color: yellow;
+    background-color: #F0E495;
     border-radius: 50%;
     border: 4px solid black;
     cursor: pointer;
@@ -73,18 +73,54 @@ header > h1 {
 /**/
 .results {
     height: 150px;
-    background-color: rgba(128, 0, 128, 0.63);
+    width: 60vw;
+    margin: 0 auto;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 16px;
+    text-align: center;
+    background-color: #8C8B89;
 }
 
+.round {
+    margin-bottom: 8px;
+}
+
+.playerSelection {
+    margin-right: 32px;
+}
+
+.computerSelection {
+    margin-left: 28px;
+}
+
+.result {
+    margin: 2px 0;
+}
+
+.score {
+    margin-bottom: 8px;
+}
+/**/
+.resetBtn {
+    margin: 0 auto;
+    padding: 4px 8px;
+    font-size: medium;
+    border: none;
+    border-radius: 4px;
+    background-color: #4883A1;
+}
 
 /* Footer */
 
 footer {
-    height: 50px;
-    background-color: darkgray;
+    height: 40px;
+    background-color: #BFBCA8;
+    /* background-color: #8C8B89; */
     display: flex;
 }
 
 footer > span {
+    font-size: small;
     margin: auto;
 }
