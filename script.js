@@ -2,7 +2,7 @@
 
 // Choices buttons
 
-const choices = document.querySelectorAll('.choice > img');
+const choices = document.querySelectorAll('.choice');
 choices.forEach(choice => choice.addEventListener('click', playRound));
 
 // getComputerChoice

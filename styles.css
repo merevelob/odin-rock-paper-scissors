@@ -57,26 +57,21 @@ header > h1 {
 
 .choice {
     height: 200px;
-    width: 200px;
+    width: auto;
     background-color: #F0E495;
     border-radius: 50%;
     border: 4px solid black;
     cursor: pointer;
-    display: flex;
 }
 
-.choice img {
-    height: 150px;
-    width: auto;
-    margin: auto;
-}
 /**/
 .results {
     height: 150px;
     width: 60vw;
     margin: 0 auto;
     padding: 8px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: none;
     border-radius: 16px;
     text-align: center;
     background-color: #8C8B89;
@@ -100,6 +95,10 @@ header > h1 {
 
 .score {
     margin-bottom: 8px;
+}
+
+.winner {
+    text-shadow: 0 0 0.5em #4883A1;
 }
 /**/
 .resetBtn {
