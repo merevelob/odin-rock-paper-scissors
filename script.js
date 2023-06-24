@@ -87,3 +87,8 @@ function playRound(event) {
     }
 }
 
+// Reset button
+
+const resetBtn = document.querySelector('.resetBtn');
+resetBtn.addEventListener('click', () => document.location.reload());
+
