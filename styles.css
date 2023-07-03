@@ -115,11 +115,17 @@ header > h1 {
 footer {
     height: 40px;
     background-color: #BFBCA8;
-    /* background-color: #8C8B89; */
     display: flex;
 }
 
-footer > span {
+footer > p {
     font-size: small;
     margin: auto;
+    display: flex;
+}
+
+footer img {
+    height: 16px;
+    width: auto;
+    margin: 0 4px;
 }
